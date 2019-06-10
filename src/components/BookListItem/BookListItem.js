@@ -1,30 +1,63 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../styles.module.css';
 
 const BookListItem = ({
     image,
     title,
     description,
-    author,
+    authors,
     publisher,
     publishedDate,
     pageCount,
-    rating,
+    // rating,
 }) => (
     <div className={styles.item}>
         <div className={styles.imgWrapper}>
-            <img className={styles.image} src={image} alt={title}></img>
+            <a href="#">
+                <img className={styles.image} src={image} alt={title}></img>
+            </a>
         </div>
+
         <div className={styles.bookDescription}>
             <h2>{title}</h2>
             <p className={styles.desrciption}>{description}</p>
-            <p>{author}</p>
-            <p>{publisher}</p>
-            <p>{publishedDate}</p>
-            <p>{pageCount}</p>
-            <p>{rating}</p>
+            <p>
+                Authors:{' '}
+                {authors &&
+                    authors.map(author => (
+                        <span key={author} className={styles.boldText}>
+                            {author}
+                        </span>
+                    ))}
+            </p>
+            <p>
+                Publisher: <span className={styles.boldText}>{publisher}</span>
+            </p>
+            <p>
+                Published date:{' '}
+                <span className={styles.boldText}>{publishedDate}</span>
+            </p>
+            <p>
+                Pages: <span className={styles.boldText}>{pageCount}</span>
+            </p>
+            {/* <p>
+                Rating: <span className={styles.boldText}>{rating}</span>
+            </p> */}
         </div>
     </div>
 );
+
+BookListItem.propTypes = {
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+    publisher: PropTypes.string.isRequired,
+    publishedDate: PropTypes.string.isRequired,
+    pageCount: PropTypes.string.isRequired,
+    // rating: PropTypes.string.isRequired,
+};
 
 export default BookListItem;

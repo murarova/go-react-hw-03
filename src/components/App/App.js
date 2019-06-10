@@ -1,17 +1,35 @@
 import React, { Component } from 'react';
+import fetchItems from '../../services/fetch';
 import SearchForm from '../SearchForm/SearchForm';
 import BookList from '../BookList/BookList';
-import data from '../data.json';
-// import styles from '../styles.module.css';
+import styles from '../styles.module.css';
+import Loader from '../Loader/Loader';
 
 class App extends Component {
-    state = {};
+    state = {
+        searchResult: [],
+        isLoading: false,
+    };
+
+    onFormaSubmit = (query, genre) => {
+        this.setState({ isLoading: true });
+
+        fetchItems(query, genre)
+            .then(fetchData =>
+                this.setState({ searchResult: fetchData.data.items }),
+            )
+            .catch(err => console.log(err))
+            .finally(() => this.setState({ isLoading: false }));
+    };
 
     render() {
+        const { searchResult, isLoading } = this.state;
+
         return (
-            <div>
-                <SearchForm />
-                <BookList items={data} />
+            <div className={styles.wrapper}>
+                <SearchForm onSubmit={this.onFormaSubmit} />
+                {isLoading && <Loader />}
+                {searchResult.length > 0 && <BookList items={searchResult} />}
             </div>
         );
     }
