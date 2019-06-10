@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fetchItems from '../../services/fetch';
+import fetchItems from '../../../services/fetch';
 import SearchForm from '../SearchForm/SearchForm';
 import BookList from '../BookList/BookList';
 import styles from '../styles.module.css';
