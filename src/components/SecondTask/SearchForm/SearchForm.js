@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles.module.css';
 
 class SearchForm extends Component {
     state = {
         value: '',
     };
 
+    handleChange = e => this.setState({ value: e.target.value });
+
+    onInputSubmit = e => {
+        e.preventDefault();
+        this.props.onSubmit(this.state.value);
+        this.setState({ value: '' });
+    };
+
     render() {
         const { value } = this.state;
-        const { onSubmit } = this.props;
         return (
-            <form className="searchForm">
+            <form className={styles.searchForm} onSubmit={this.onInputSubmit}>
                 <input
-                    onSubmit={onSubmit}
+                    onChange={this.handleChange}
                     value={value}
                     type="text"
                     autoComplete="off"
