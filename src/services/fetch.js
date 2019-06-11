@@ -13,5 +13,6 @@ export const fetchItems = (query, genre) =>
             'Content-Type': 'text/html',
         },
     });
-export const fetchCats = query =>
+
+export const fetchPixabay = query =>
     axios.get(`${CATS_URL}${query}&page=${1}per_page=12&key=${KEY}`);

@@ -50,14 +50,24 @@ const BookListItem = ({
 );
 
 BookListItem.propTypes = {
-    image: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    authors: PropTypes.arrayOf(PropTypes.string).isRequired,
-    publisher: PropTypes.string.isRequired,
-    publishedDate: PropTypes.string.isRequired,
-    pageCount: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    authors: PropTypes.arrayOf(PropTypes.string),
+    publisher: PropTypes.string,
+    publishedDate: PropTypes.string,
+    pageCount: PropTypes.number,
     // rating: PropTypes.string.isRequired,
+};
+
+BookListItem.defaultProps = {
+    image: '',
+    title: '',
+    description: '',
+    authors: [],
+    publisher: '',
+    publishedDate: '',
+    pageCount: null,
 };
 
 export default BookListItem;

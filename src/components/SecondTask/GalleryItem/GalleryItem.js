@@ -15,26 +15,26 @@ const GalleryItem = ({
     <li key={id} className={styles.galleryItem}>
         <img src={webformatURL} alt={tags} />
         <div className={styles.stats}>
-            <p className="stats-item">
-                <i className={styles.materialIcons}>thumb_up</i>
+            <p className={styles.statsItem}>
+                <i className="material-icons">thumb_up</i>
                 {likes}
             </p>
             <p className={styles.statsItem}>
-                <i className={styles.materialIcons}>visibility</i>
+                <i className="material-icons">visibility</i>
                 {views}
             </p>
             <p className={styles.statsItem}>
-                <i className={styles.materialIcons}>comment</i>
+                <i className="material-icons">comment</i>
                 {comments}
             </p>
             <p className={styles.statsItem}>
-                <i className={styles.materialIcons}>cloud_download</i>
+                <i className="material-icons">cloud_download</i>
                 {downloads}
             </p>
         </div>
 
         <button type="button" className={styles.fullscreenButton}>
-            <i className={styles.materialIcons}>zoom_out_map</i>
+            <i className="material-icons">zoom_out_map</i>
         </button>
     </li>
 );
