@@ -9,7 +9,10 @@ class SearchForm extends Component {
         category: '',
     };
 
-    onInputChange = e => this.setState({ inputValue: e.target.value });
+    onInputChange = e => {
+        this.setState({ inputValue: e.target.value });
+        this.props.onSubmit(e.target.value, this.state.category);
+    };
 
     onSelectBlur = e => this.setState({ category: e.target.value });
 

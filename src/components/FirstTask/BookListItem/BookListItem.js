@@ -11,7 +11,7 @@ const BookListItem = ({
     publisher,
     publishedDate,
     pageCount,
-    // rating,
+    rating,
 }) => (
     <div className={styles.item}>
         <div className={styles.imgWrapper}>
@@ -42,9 +42,10 @@ const BookListItem = ({
             <p>
                 Pages: <span className={styles.boldText}>{pageCount}</span>
             </p>
-            {/* <p>
-                Rating: <span className={styles.boldText}>{rating}</span>
-            </p> */}
+            <p>
+                Rating:{' '}
+                <span className={styles.boldText}>{rating || 'No data'}</span>
+            </p>
         </div>
     </div>
 );
@@ -57,7 +58,7 @@ BookListItem.propTypes = {
     publisher: PropTypes.string,
     publishedDate: PropTypes.string,
     pageCount: PropTypes.number,
-    // rating: PropTypes.string.isRequired,
+    rating: PropTypes.number,
 };
 
 BookListItem.defaultProps = {
@@ -68,6 +69,7 @@ BookListItem.defaultProps = {
     publisher: '',
     publishedDate: '',
     pageCount: null,
+    rating: 0,
 };
 
 export default BookListItem;

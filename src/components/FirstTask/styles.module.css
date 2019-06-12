@@ -46,10 +46,11 @@ a {
 }
 
 .imgWrapper {
-    width: 50%;
+    width: 30%;
+    margin-right: 15px;
 }
 .bookDescription {
-    width: 50%;
+    width: 80%;
 }
 .desrciption {
     border-top: 1px solid #fff;

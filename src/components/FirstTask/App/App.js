@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import { throttle } from 'lodash';
 import { fetchItems } from '../../../services/fetch';
 import SearchForm from '../SearchForm/SearchForm';
 import BookList from '../BookList/BookList';
 import styles from '../styles.module.css';
 import Loader from '../Loader/Loader';
+
+// const fetchItemsDebounced = debounce((...args) => {
+//     console.log('request');
+//     return fetchItems(...args);
+// }, 300);
+
+// const fetchItemsDebounced = debounce(fetchItems, 300);
 
 class App extends Component {
     state = {
@@ -11,8 +19,14 @@ class App extends Component {
         isLoading: false,
     };
 
+    constructor(props) {
+        super(props);
+        this.onFormaSubmitDebounsed = throttle(this.onFormaSubmit, 2000);
+    }
+
     onFormaSubmit = (query, genre) => {
         this.setState({ isLoading: true });
+        console.log('works');
 
         fetchItems(query, genre)
             .then(fetchData =>
@@ -24,11 +38,11 @@ class App extends Component {
     };
 
     render() {
-        const { searchResult, isLoading } = this.state;
+        const { searchResult = [], isLoading } = this.state;
 
         return (
             <div className={styles.wrapper}>
-                <SearchForm onSubmit={this.onFormaSubmit} />
+                <SearchForm onSubmit={this.onFormaSubmitDebounsed} />
                 {isLoading && <Loader />}
                 {searchResult.length > 0 && <BookList items={searchResult} />}
             </div>
