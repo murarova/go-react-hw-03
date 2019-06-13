@@ -121,7 +121,7 @@ img {
     opacity: 1;
 }
 
-/* Стили кнопки Load more */
+/* Стили кнопки */
 .button {
     padding: 8px 16px;
     border-radius: 3px;
@@ -145,4 +145,27 @@ img {
 .button:hover,
 .button:focus {
     background-color: #1f65d6;
+}
+
+/* Стили модального окна */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.modal {
+    padding: 10px;
+    max-width: 480px;
+    width: 100%;
+    min-height: 320px;
+    background-color: #fff;
 }

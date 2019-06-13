@@ -11,6 +11,7 @@ const GalleryItem = ({
     comments,
     downloads,
     tags,
+    onClick,
 }) => (
     <li key={id} className={styles.galleryItem}>
         <img src={webformatURL} alt={tags} />
@@ -33,21 +34,26 @@ const GalleryItem = ({
             </p>
         </div>
 
-        <button type="button" className={styles.fullscreenButton}>
+        <button
+            type="button"
+            className={styles.fullscreenButton}
+            onClick={onClick}
+        >
             <i className="material-icons">zoom_out_map</i>
         </button>
     </li>
 );
 
 GalleryItem.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     webformatURL: PropTypes.string.isRequired,
     // largeImageURL: PropTypes.string.isRequired,
-    likes: PropTypes.string.isRequired,
-    views: PropTypes.string.isRequired,
-    comments: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    comments: PropTypes.number.isRequired,
     downloads: PropTypes.number.isRequired,
-    tags: PropTypes.number.isRequired,
+    tags: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default GalleryItem;

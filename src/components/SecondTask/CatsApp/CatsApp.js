@@ -1,14 +1,19 @@
-/* eslint-disable no-console */
 import React, { Component } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Gallery from '../Gallery/Gallery';
+import Modal from '../Modal/Modal';
 import { fetchPixabay } from '../../../services/fetch';
 import styles from '../styles.module.css';
 
 class CatsApp extends Component {
     state = {
         galleryItems: [],
+        isModalOpen: false,
     };
+
+    openModal = () => this.setState({ isModalOpen: true });
+
+    closeModal = () => this.setState({ isModalOpen: false });
 
     onSubmit = query => {
         fetchPixabay(query)
@@ -19,12 +24,21 @@ class CatsApp extends Component {
     };
 
     render() {
-        const { galleryItems } = this.state;
+        const { galleryItems, isModalOpen } = this.state;
         return (
             <div className={styles.app}>
                 <SearchForm onSubmit={this.onSubmit} />
                 {galleryItems.length > 0 && (
-                    <Gallery galleryItems={galleryItems} />
+                    <Gallery
+                        galleryItems={galleryItems}
+                        onClick={this.openModal}
+                    />
+                )}
+
+                {isModalOpen && (
+                    <Modal onClose={this.closeModal}>
+                        <h2>Cats</h2>
+                    </Modal>
                 )}
             </div>
         );
