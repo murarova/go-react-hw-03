@@ -1,38 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../styles.module.css';
 
-class SearchForm extends Component {
-    state = {
-        value: '',
-    };
+const SearchForm = ({ value, onChange, onSubmit }) => (
+    <form className={styles.searchForm} onSubmit={onSubmit}>
+        <input
+            onChange={onChange}
+            value={value}
+            type="text"
+            autoComplete="off"
+            placeholder="Search images..."
+        />
+    </form>
+);
 
-    handleChange = e => this.setState({ value: e.target.value });
-
-    onInputSubmit = e => {
-        e.preventDefault();
-        this.props.onSubmit(this.state.value);
-        this.setState({ value: '' });
-    };
-
-    render() {
-        const { value } = this.state;
-        return (
-            <form className={styles.searchForm} onSubmit={this.onInputSubmit}>
-                <input
-                    onChange={this.handleChange}
-                    value={value}
-                    type="text"
-                    autoComplete="off"
-                    placeholder="Search images..."
-                />
-            </form>
-        );
-    }
-}
+export default SearchForm;
 
 SearchForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
 };
-
-export default SearchForm;

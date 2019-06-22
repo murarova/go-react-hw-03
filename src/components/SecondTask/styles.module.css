@@ -140,6 +140,7 @@ img {
     min-width: 180px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
 }
 
 .button:hover,
@@ -164,8 +165,8 @@ img {
 
 .modal {
     padding: 10px;
-    max-width: 480px;
+    max-width: 680px;
     width: 100%;
-    min-height: 320px;
+    min-height: 420px;
     background-color: #fff;
 }

@@ -26,7 +26,6 @@ class App extends Component {
 
     onFormaSubmit = (query, genre) => {
         this.setState({ isLoading: true });
-        console.log('works');
 
         fetchItems(query, genre)
             .then(fetchData =>

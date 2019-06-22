@@ -14,5 +14,10 @@ export const fetchItems = (query, genre) =>
         },
     });
 
-export const fetchPixabay = query =>
-    axios.get(`${CATS_URL}${query}&page=${1}per_page=12&key=${KEY}`);
+export const fetchPixabay = (query, page = 1, perPage = 12) => {
+    // debugger;
+    return axios.get(
+        `${CATS_URL}${query}&page=${page}&per_page=${perPage}&key=${KEY}`,
+    );
+    // debugger;
+};

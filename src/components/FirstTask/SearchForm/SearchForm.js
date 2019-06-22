@@ -11,7 +11,6 @@ class SearchForm extends Component {
 
     onInputChange = e => {
         this.setState({ inputValue: e.target.value });
-        this.props.onSubmit(e.target.value, this.state.category);
     };
 
     onSelectBlur = e => this.setState({ category: e.target.value });

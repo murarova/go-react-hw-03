@@ -29,14 +29,16 @@ class Modal extends Component {
     };
 
     render() {
-        const { children } = this.props;
+        const { largeImageUrl } = this.props;
         return (
             <div
                 className={styles.backdrop}
                 ref={this.backDropRef}
                 onClick={this.handleDropClick}
             >
-                <div className={styles.modal}>{children}</div>
+                <div className={styles.modal}>
+                    <img src={largeImageUrl} alt="search"></img>
+                </div>
             </div>
         );
     }
@@ -44,7 +46,7 @@ class Modal extends Component {
 
 Modal.propTypes = {
     onClose: PropTypes.func.isRequired,
-    children: PropTypes.arrayOf(PropTypes.string).isRequired,
+    largeImageUrl: PropTypes.string.isRequired,
 };
 
 export default Modal;

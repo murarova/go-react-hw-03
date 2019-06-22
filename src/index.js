@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-// import App from './components/FirstTask/App/App';
-import CatsApp from './components/SecondTask/CatsApp/CatsApp';
+import App from './components/FirstTask/App/App';
+import SearchPicApp from './components/SecondTask/SearchPicApp/SearchPicApp';
 
 ReactDOM.render(
     <Fragment>
-        {/* <App /> */}
-        <CatsApp />
+        <App />
+        <SearchPicApp />
     </Fragment>,
     document.getElementById('root'),
 );
